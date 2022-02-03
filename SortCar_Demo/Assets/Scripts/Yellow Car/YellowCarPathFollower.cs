@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PurpleCarPathFollower : MonoBehaviour
+public class YellowCarPathFollower : MonoBehaviour
 {
     private GameObject[] pathArray;
     
-    private float waypointRadius = 0.001f;
+    private float waypointRadius = 0.01f;
 
     private bool canMove;
 
@@ -20,12 +20,12 @@ public class PurpleCarPathFollower : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.OnGridFoundForPurpleCar.AddListener(GetPath);
+        EventManager.OnGridFoundForYellowCar.AddListener(GetPath);
     }
 
     private void OnDisable()
     {
-        EventManager.OnGridFoundForPurpleCar.RemoveListener(GetPath);
+        EventManager.OnGridFoundForYellowCar.RemoveListener(GetPath);
     }
 
     private void Start()
@@ -45,7 +45,7 @@ public class PurpleCarPathFollower : MonoBehaviour
     {
         if (!isFirstInQueue) return;
 
-        Path path = PurplePathController.instance.PurpleCarPaths[index];
+        Path path = YellowPathController.instance.YellowCarPaths[index];
         pathArray = path.waypoints;
         isFirstInQueue = false;
         canMove = true;
@@ -54,7 +54,7 @@ public class PurpleCarPathFollower : MonoBehaviour
     }
 
     private void Move()
-    {       
+    {                
         if (Vector3.Distance(transform.position, pathArray[waypointIndex].transform.position) < waypointRadius)
         {
             waypointIndex++;
