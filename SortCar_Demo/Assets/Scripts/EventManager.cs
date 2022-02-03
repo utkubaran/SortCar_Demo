@@ -16,4 +16,10 @@ public static class EventManager
     public static UnityEvent OnPurpleButtonPressed = new UnityEvent();
     public static UnityEvent OnYellowButtonPressed = new UnityEvent();
     #endregion
+
+    #region Grid Events
+    public static GridEvent OnGridFoundForPurpleCar = new GridEvent();
+    public static GridEvent OnGridFoundForYellowCar = new GridEvent();
+    #endregion
 }
+public class GridEvent: UnityEvent<int> { }

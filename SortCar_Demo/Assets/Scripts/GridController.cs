@@ -14,6 +14,17 @@ public class GridController : MonoBehaviour
 
     public int YellowCarGridPosition { get { return yellowGridPosition; } }
 
+    private void OnEnable()
+    {
+        EventManager.OnPurpleButtonPressed.AddListener(FindPositionForPurpleCar);
+        EventManager.OnYellowButtonPressed.AddListener(FindPositionForYellowCar);
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnPurpleButtonPressed.RemoveListener(FindPositionForPurpleCar);
+        EventManager.OnYellowButtonPressed.RemoveListener(FindPositionForYellowCar);
+    }
 
     void Start()
     {
@@ -30,6 +41,7 @@ public class GridController : MonoBehaviour
                 purpleGridPosition = i;
                 purpleCarGrids[i] = true;
                 CheckCommonGridsOfPurple(i);
+                EventManager.OnGridFoundForPurpleCar?.Invoke(i);
                 break;
             }
         }
@@ -44,6 +56,7 @@ public class GridController : MonoBehaviour
                 yellowGridPosition = i;
                 yellowCarGrids[i] = true;
                 CheckCommonGridsOfYellow(i);
+                EventManager.OnGridFoundForYellowCar?.Invoke(i);
                 break;
             }
         }
