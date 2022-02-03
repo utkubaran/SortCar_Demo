@@ -435,6 +435,7 @@ Transform:
   - {fileID: 966141196}
   - {fileID: 1300656921}
   - {fileID: 1257574933}
+  - {fileID: 1102976326}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -633,6 +634,36 @@ Transform:
   m_Father: {fileID: 482874110}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1102976325
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1102976326}
+  m_Layer: 0
+  m_Name: Waypoint (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1102976326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102976325}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 24, y: 0, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 482874110}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1132899583
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1412550787}
   - component: {fileID: 1412550788}
+  - component: {fileID: 1412550789}
   m_Layer: 0
   m_Name: Path Manager
   m_TagString: Untagged
@@ -822,6 +854,58 @@ MonoBehaviour:
     - {fileID: 2098186854}
   - waypoints:
     - {fileID: 2031889942}
+    - {fileID: 180363438}
+--- !u!114 &1412550789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412550786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda6f6fa0f8d31249b390aa335259915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yellowCarPaths:
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 614862433}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 209061295}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1132899583}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 2109973142}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1257574932}
+    - {fileID: 1102976325}
+    - {fileID: 2124903779}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1257574932}
+    - {fileID: 1102976325}
+    - {fileID: 1228154007}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1257574932}
+    - {fileID: 1102976325}
+    - {fileID: 1300656920}
+    - {fileID: 1579688895}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1257574932}
+    - {fileID: 1102976325}
+    - {fileID: 1300656920}
+    - {fileID: 2098186854}
+  - waypoints:
+    - {fileID: 966141195}
+    - {fileID: 1257574932}
+    - {fileID: 1102976325}
     - {fileID: 180363438}
 --- !u!1 &1471068396
 GameObject:

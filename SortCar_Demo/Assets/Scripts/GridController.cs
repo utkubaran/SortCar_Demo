@@ -21,11 +21,6 @@ public class GridController : MonoBehaviour
         yellowCarGrids = new bool[9];
     }
 
-    void Update()
-    {
-        
-    }
-
     private void FindPositionForPurpleCar()
     {
         for (int i = 0; i < purpleCarGrids.Length; i++)

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path : ScriptableObject
+[System.Serializable]
+public class Path
 {
-    public List<GameObject> waypoints;
+    public GameObject[] waypoints;
 }
