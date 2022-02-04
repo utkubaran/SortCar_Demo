@@ -10,14 +10,19 @@ public class YellowCar : MonoBehaviour
     private bool isParked = false;
     public bool IsParked { set { isParked = true; } }
 
-    private void OnTriggerEnter(Collider other)
+    private bool isProcessCompleted = false;
+
+    private void OnTriggerStay(Collider other)
     {
         bool isParkingGrid = other.gameObject.GetComponent<ParkingGrid>();
 
-        if (!isParkingGrid || !isParked) return;
+        if (!isParkingGrid || !isParked || isProcessCompleted) return;
+
+        isProcessCompleted = true;
 
         if (yellowCarColour == other.gameObject.GetComponent<ParkingGrid>().gridColour)
         {
+            Debug.Log("Yellow is placed!");
             // todo enable check sign
         }
     }

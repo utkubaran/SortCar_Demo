@@ -10,14 +10,19 @@ public class PurpleCar : MonoBehaviour
     private bool isParked = false;
     public bool IsParked { set { isParked = true; } }
 
-    private void OnTriggerEnter(Collider other)
+    private bool isProcessCompleted = false;        // It's a precaution to sent event once.
+
+    private void OnTriggerStay(Collider other)
     {
         bool isParkingGrid = other.gameObject.GetComponent<ParkingGrid>();
 
-        if (!isParkingGrid || !isParked) return;
+        if (!isParkingGrid || !isParked || isProcessCompleted) return;
+
+        isProcessCompleted = true;
 
         if (purpleCarColour == other.gameObject.GetComponent<ParkingGrid>().gridColour)
         {
+            Debug.Log("Purple is placed!");
             // todo enable check sign
         }
     }
