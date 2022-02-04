@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class PurpleCarPathFollower : MonoBehaviour
 {
+    [SerializeField]
+    private float movementDurationBetweenWaypoints = 2f;
+
+    [SerializeField]
+    private float rotationSpeed = 10f;
+
     private GameObject[] pathArray;
 
     private PurpleCar purpleCar;
     
-    private float waypointRadius = 0.001f;
+    private float waypointRadius = 0.5f;
 
     private bool canMove;
 
@@ -73,13 +79,22 @@ public class PurpleCarPathFollower : MonoBehaviour
                 purpleCar.IsParked = true;
                 return;
             }
-
+            
             MoveWithEasing();
         }
+
+        RotateTowardsNextWaypoint();
     }
 
     private void MoveWithEasing()
     {
-        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, 2f).setEaseInOutSine();
+        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, movementDurationBetweenWaypoints).setEaseInOutSine();
+    }
+
+    private void RotateTowardsNextWaypoint()
+    {
+        Vector3 direction = pathArray[waypointIndex].transform.position - this.transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 }

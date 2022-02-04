@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class YellowCarPathFollower : MonoBehaviour
 {
+    [SerializeField]
+    private float movementDurationBetweenWaypoints = 2f;
+
+    [SerializeField]
+    private float rotationSpeed = 10f;
+
     private GameObject[] pathArray;
+
+    private YellowCar yellowCar;
     
-    private float waypointRadius = 0.01f;
+    private float waypointRadius = 0.5f;
 
     private bool canMove;
 
@@ -26,6 +34,11 @@ public class YellowCarPathFollower : MonoBehaviour
     private void OnDisable()
     {
         EventManager.OnGridFoundForYellowCar.RemoveListener(GetPath);
+    }
+
+    private void Awake()
+    {
+        yellowCar = GetComponent<YellowCar>();
     }
 
     private void Start()
@@ -63,15 +76,25 @@ public class YellowCarPathFollower : MonoBehaviour
             {
                 waypointIndex = 0;
                 canMove = false;
+                yellowCar.IsParked = true;
                 return;
             }
 
             MoveWithEasing();
         }
+
+        RotateTowardsNextWaypoint();
     }
 
     private void MoveWithEasing()
     {
-        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, 2f).setEaseInOutSine();
+        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, movementDurationBetweenWaypoints).setEaseInOutSine();
+    }
+
+    private void RotateTowardsNextWaypoint()
+    {
+        Vector3 direction = pathArray[waypointIndex].transform.position - this.transform.position;
+        Quaternion toRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
     }
 }
