@@ -7,7 +7,12 @@ public class YellowButton : MonoBehaviour
     [SerializeField]
     private Transform buttonChamfer;
 
+    [SerializeField]
+    private YellowGateController yellowGateController;
+
     private Collider buttonCollider;
+
+    private float buttonTimer, buttonMovementDuration = 0.2f;
 
     private void OnEnable()
     {
@@ -24,23 +29,28 @@ public class YellowButton : MonoBehaviour
         buttonCollider = GetComponent<Collider>();
     }
 
+    private void Start()
+    {
+        buttonTimer = yellowGateController.GateMovementDuration;
+    }
+
     private void MoveButton()
     {
         StartCoroutine(MoveButtonWithDelay());
-        StartCoroutine(DisableButton());
+        StartCoroutine(DisableButtonForAWhile());
     }
 
     private IEnumerator MoveButtonWithDelay()
     {
-        LeanTween.moveLocalY(buttonChamfer.gameObject, -5.5f, 0.2f);
+        LeanTween.moveLocalY(buttonChamfer.gameObject, -5.5f, buttonMovementDuration);
         yield return new WaitForSeconds(0.25f);
-        LeanTween.moveLocalY(buttonChamfer.gameObject, 0f, 0.2f);
+        LeanTween.moveLocalY(buttonChamfer.gameObject, 0f, buttonMovementDuration);
     }
 
-    private IEnumerator DisableButton()
+    private IEnumerator DisableButtonForAWhile()
     {
         buttonCollider.enabled = false;
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(buttonTimer);
         buttonCollider.enabled = true;
     }
 }

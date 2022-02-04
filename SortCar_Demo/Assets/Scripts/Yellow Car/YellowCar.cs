@@ -7,10 +7,27 @@ public class YellowCar : MonoBehaviour
     [System.NonSerialized]
     public Car.CarColour yellowCarColour = Car.CarColour.Yellow;
 
+    private GameObject carUI;
+
     private bool isParked = false;
     public bool IsParked { set { isParked = true; } }
 
     private bool isProcessCompleted = false;
+
+    private void OnEnable()
+    {
+        EventManager.OnSceneStart.AddListener( () => carUI.SetActive(false) );
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnSceneStart.RemoveListener( () => carUI.SetActive(false) );
+    }
+
+    private void Awake()
+    {
+        carUI = GetComponentInChildren<CarUI>().gameObject;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -23,7 +40,8 @@ public class YellowCar : MonoBehaviour
         if (yellowCarColour == other.gameObject.GetComponent<ParkingGrid>().gridColour)
         {
             EventManager.OnCarPlacedRightGrid?.Invoke();
-            // todo enable check sign
+            carUI.SetActive(true);
+            carUI.GetComponent<CarUI>().SetUIRotation();
         }
         else
         {

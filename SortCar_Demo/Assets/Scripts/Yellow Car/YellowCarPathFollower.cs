@@ -5,7 +5,7 @@ using UnityEngine;
 public class YellowCarPathFollower : MonoBehaviour
 {
     [SerializeField]
-    private float movementDurationBetweenWaypoints = 2f;
+    private float totalTravelDuration = 2f;
 
     [SerializeField]
     private float rotationSpeed = 10f;
@@ -25,6 +25,8 @@ public class YellowCarPathFollower : MonoBehaviour
     public bool IsFirstInQueue { get { return isFirstInQueue; } set { isFirstInQueue = value; } }
 
     private int waypointIndex = 0;
+
+    private float stepDuration;
 
     private void OnEnable()
     {
@@ -64,6 +66,7 @@ public class YellowCarPathFollower : MonoBehaviour
         canMove = true;
         isInQueue = false;
         transform.position = pathArray[waypointIndex].transform.position;
+        stepDuration = totalTravelDuration / (pathArray.Length - 1);
     }
 
     private void Move()
@@ -88,7 +91,7 @@ public class YellowCarPathFollower : MonoBehaviour
 
     private void MoveWithEasing()
     {
-        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, movementDurationBetweenWaypoints).setEaseInOutSine();
+        LeanTween.move(this.gameObject, pathArray[waypointIndex].transform.position, stepDuration).setEaseInOutSine();
     }
 
     private void RotateTowardsNextWaypoint()

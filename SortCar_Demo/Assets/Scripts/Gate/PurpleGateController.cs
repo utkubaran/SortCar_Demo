@@ -7,6 +7,10 @@ public class PurpleGateController : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     private float gateMovementDuration = 0.5f;
 
+    private float bufferTime = 0.15f;
+
+    public float GateMovementDuration { get { return gateMovementDuration * 2f + bufferTime; } }
+
     private void OnEnable()
     {
         EventManager.OnPurpleButtonPressed.AddListener(StartGateSequence);
@@ -25,7 +29,7 @@ public class PurpleGateController : MonoBehaviour
     private IEnumerator GateSequenceWithDelay()
     {
         LeanTween.rotateZ(this.gameObject, -90f, gateMovementDuration);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(gateMovementDuration + bufferTime);
         LeanTween.rotateZ(this.gameObject, 0f, gateMovementDuration);
     }
 }
