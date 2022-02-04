@@ -66,7 +66,7 @@ public class PurpleCarPathFollower : MonoBehaviour
         canMove = true;
         isInQueue = false;
         transform.position = pathArray[waypointIndex].transform.position;
-        stepDuration = totalTravelDuration / (pathArray.Length - 1);
+        stepDuration = (pathArray.Length > 2) ? ((totalTravelDuration * 1.5f) / (pathArray.Length - 1)) : (totalTravelDuration / (pathArray.Length - 1));
     }
 
     private void Move()
