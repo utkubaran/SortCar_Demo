@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 5653579029830698282}
   - component: {fileID: 5653579029830698283}
   - component: {fileID: 5653579029830698280}
+  - component: {fileID: -6985392637185066740}
   m_Layer: 7
   m_Name: Yellow Car (4)
   m_TagString: Yellow Car
@@ -174,3 +175,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   queueStepSize: 25
+--- !u!114 &-6985392637185066740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653579029830698279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b528c5d3b5bd7469c779fe1e6b3fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

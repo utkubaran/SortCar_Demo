@@ -22,8 +22,13 @@ public class YellowCar : MonoBehaviour
 
         if (yellowCarColour == other.gameObject.GetComponent<ParkingGrid>().gridColour)
         {
+            EventManager.OnCarPlacedRightGrid?.Invoke();
             Debug.Log("Yellow is placed!");
             // todo enable check sign
+        }
+        else
+        {
+            EventManager.OnLevelFail?.Invoke();
         }
     }
 }

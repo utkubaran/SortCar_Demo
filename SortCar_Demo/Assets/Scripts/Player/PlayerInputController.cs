@@ -4,17 +4,38 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour
 {
+    private Camera mainCam;
+
+    private void Awake()
+    {
+        mainCam = Camera.main;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        PressButton();
+    }
+    
+    private void PressButton()
+    {
+        if (!Input.GetMouseButtonDown(0)) return;
+
+        Ray ray = mainCam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
         {
-            EventManager.OnPurpleButtonPressed?.Invoke();
-            Debug.Log("Purple car is sent!");
-        }
-        else if (Input.GetKeyDown(KeyCode.Y))
-        {
-            EventManager.OnYellowButtonPressed?.Invoke();
-            Debug.Log("Yellow car is sent!");
+            bool isPurpleButton = hit.transform.gameObject.GetComponent<PurpleButton>();
+            bool isYellowButton = hit.transform.gameObject.GetComponent<YellowButton>();
+
+            if (isPurpleButton)
+            {
+                EventManager.OnPurpleButtonPressed?.Invoke();
+            }
+            else if (isYellowButton)
+            {
+                EventManager.OnYellowButtonPressed?.Invoke();
+            }
         }
     }
 }

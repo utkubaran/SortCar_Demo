@@ -22,8 +22,13 @@ public class PurpleCar : MonoBehaviour
 
         if (purpleCarColour == other.gameObject.GetComponent<ParkingGrid>().gridColour)
         {
+            EventManager.OnCarPlacedRightGrid?.Invoke();
             Debug.Log("Purple is placed!");
             // todo enable check sign
+        }
+        else
+        {
+            EventManager.OnLevelFail?.Invoke();
         }
     }
 }

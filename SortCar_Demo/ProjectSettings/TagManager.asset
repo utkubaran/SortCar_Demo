@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Purple Car
   - Yellow Car
+  - Purple Grid
+  - Yellow Grid
+  - Purple Button
+  - Yellow Button
   layers:
   - Default
   - TransparentFX
@@ -15,10 +19,10 @@ TagManager:
   - UI
   - Purple Car
   - Yellow Car
-  - 
-  - 
-  - 
-  - 
+  - Purple Grid
+  - Yellow Grid
+  - Purple Button
+  - Yellow Button
   - 
   - 
   - 

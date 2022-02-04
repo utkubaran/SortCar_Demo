@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 246410008712101279}
   - component: {fileID: 246410008712101276}
   - component: {fileID: 246410008712101249}
+  - component: {fileID: -5776187887064837252}
   m_Layer: 6
   m_Name: Purple Car (2)
   m_TagString: Purple Car
@@ -87,6 +88,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 12.5, z: 17.5}
   m_Center: {x: 0, y: 3.4, z: 0}
+--- !u!114 &-5776187887064837252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246410008712101274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b528c5d3b5bd7469c779fe1e6b3fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4799577358467887578
 GameObject:
   m_ObjectHideFlags: 0
